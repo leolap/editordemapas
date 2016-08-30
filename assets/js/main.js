@@ -180,6 +180,10 @@ angular
 
         function idToImageUrl(id){
 
+            if(id == 0){
+                return false;
+            }
+
             var chunks = id.split("-");
 
             var categorias = {
@@ -229,10 +233,12 @@ angular
 
                         var id = ids.shift();
 
-                        $(this);
+                        var img = idToImageUrl(id);
 
-                        $(this).attr("style","background-image:url("+ idToImageUrl(id)  +")");
-                        $(this).attr('data-img', idToImageUrl(id));
+                        if(img) {
+                            $(this).attr("style", "background-image:url(" + img + ")");
+                            $(this).attr('data-img', img);
+                        }
                         $(this).attr('data-id', id);
 
                     });
