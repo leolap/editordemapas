@@ -269,6 +269,8 @@ angular
 
             var slotsImg = new Array();
 
+            var tamanhoImagem = 400;
+
 
             $('.slot').each(function (key) {
 
@@ -276,24 +278,18 @@ angular
 
             });
 
-            console.log(canvas.height + ' ' + canvas.width);
-
-            console.log($scope.length * 100);
-
-            canvas.height = $scope.length * 100;
-            canvas.width = $scope.width * 100;
-
-            console.log(canvas.height + ' ' + canvas.width);
+            canvas.height = $scope.length * tamanhoImagem;
+            canvas.width = $scope.width * tamanhoImagem;
 
 
             for (var i = 0; i < $scope.length; i++){
                 for (var j = 0; j < $scope.width; j++){
                         var imageObj = new Image();
                         imageObj.src = slotsImg.shift();
-                        imageObj.setAtX = j * 100;
-                        imageObj.setAtY = i * 100;
+                        imageObj.setAtX = j * tamanhoImagem;
+                        imageObj.setAtY = i * tamanhoImagem;
                         imageObj.onload = function() {
-                            ctx.drawImage(this, this.setAtX, this.setAtY, 100, 100);
+                            ctx.drawImage(this, this.setAtX, this.setAtY, tamanhoImagem, tamanhoImagem);
                         };
 
                 }
