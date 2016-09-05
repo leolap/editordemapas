@@ -30,6 +30,9 @@
                 <div class="slot" ng-repeat="cell in row track by $index" data-id="0" data-img="null"  x-lvl-draggable='true' x-lvl-drop-target="true" x-on-drop="dropped(dragEl, dropEl)">
                 </div>
             </div>
+            <div ng-show="false">
+            <canvas id="mapa" width="{{ imagem.largura }}" height="{{ imagem.altura }}"></canvas>
+            </div>
         </div>
         <div class="col-md-2">
             <div class="lixeira">
@@ -45,8 +48,9 @@
                 <button ng-click="sizeChange(false,false)">-</button>
 
                 <div>
-                    <a href="#" id="expJ" download="data.json">Download json</a>
-                    Importar mapa <input type="file" id="impJ" />
+                    <a href="#" id="expJ" download="mapa.json">Download json</a>
+                    <input type="file" id="impJ" />
+                    <a href="#" id="expI">Gera imagem</a>
                 </div>
 
         </div>

@@ -14,10 +14,19 @@ angular
         var maxCol = 7;
         var minRow = 3;
         var minCol = 3;
+
+        var imagem = {
+            'altura' : 300,
+            'largura' : 300
+        };
+
         $scope.sizes = [];
 
         $scope.length = minRow;
         $scope.width = minCol;
+
+        $scope.imagem = imagem;
+
 
         $scope.$watch('[width,length]', makeMap, true);
 
@@ -251,6 +260,48 @@ angular
 
         });
 
+        $("#expI").click(function(){
+
+            var canvas = document.getElementById("mapa");
+            var ctx = canvas.getContext("2d");
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            var slotsImg = new Array();
+
+
+            $('.slot').each(function (key) {
+
+                slotsImg.push( $(this).attr('data-img')  );
+
+            });
+
+            console.log(canvas.height + ' ' + canvas.width);
+
+            console.log($scope.length * 100);
+
+            canvas.height = $scope.length * 100;
+            canvas.width = $scope.width * 100;
+
+            console.log(canvas.height + ' ' + canvas.width);
+
+
+            for (var i = 0; i < $scope.length; i++){
+                for (var j = 0; j < $scope.width; j++){
+                        var imageObj = new Image();
+                        imageObj.src = slotsImg.shift();
+                        imageObj.setAtX = j * 100;
+                        imageObj.setAtY = i * 100;
+                        imageObj.onload = function() {
+                            ctx.drawImage(this, this.setAtX, this.setAtY, 100, 100);
+                        };
+
+                }
+
+            }
+
+            window.open().location = canvas.toDataURL("image/‌​png");
+        });
 
 
     }]);
