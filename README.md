@@ -1,4 +1,1 @@
-# ProjetoTTC
-
-a [Sails](http://sailsjs.org) application
-"# editordemapas" 
+#editor de mapas
